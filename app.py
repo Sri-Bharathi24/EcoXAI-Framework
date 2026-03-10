@@ -1,22 +1,35 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import shap
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-st.set_page_config(page_title="EcoXAI", layout="wide")
+# ----------------------------
+# PAGE CONFIG
+# ----------------------------
+st.set_page_config(page_title="EcoXAI Dashboard", layout="wide")
+
+# ----------------------------
+# DARK STYLE
+# ----------------------------
+st.markdown("""
+<style>
+body {
+    background-color: #0e1117;
+    color: white;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.title("EcoXAI Framework")
 st.subheader("IoT-Driven Water Footprint Intelligence for AI Data Centres")
-st.write("Saving Water. Explaining Why. Intelligently.")
 
-# -------------------------------
-# DATA (Simulated IoT Sensor Data)
-# -------------------------------
+# ----------------------------
+# DATA
+# ----------------------------
 
 data = {
-    'Number of Servers':[100,200,150,300,250,180,220,270,130,190],
+    'Servers':[100,200,150,300,250,180,220,270,130,190],
     'Temperature':[25,35,30,40,38,28,33,39,26,31],
     'Cooling Hours':[2,5,3,7,6,3,4,6,2,4],
     'Crypto Mining':[0,1,0,1,1,0,1,1,0,0],
@@ -25,65 +38,90 @@ data = {
 
 df = pd.DataFrame(data)
 
-st.header("IoT Sensor Data")
-st.dataframe(df)
-
-# -------------------------------
+# ----------------------------
 # TRAIN MODEL
-# -------------------------------
+# ----------------------------
 
-X = df[['Number of Servers','Temperature','Cooling Hours','Crypto Mining']]
+X = df[['Servers','Temperature','Cooling Hours','Crypto Mining']]
 y = df['Water Used']
 
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
 
-model = RandomForestRegressor(n_estimators=100,random_state=42)
+model = RandomForestRegressor(n_estimators=100)
 model.fit(X_train,y_train)
 
-st.success("AI Model trained successfully")
+# ----------------------------
+# TABS
+# ----------------------------
 
-# -------------------------------
-# GRAPH 1
-# -------------------------------
+tab1,tab2,tab3,tab4 = st.tabs([
+    "IoT Data",
+    "Analytics",
+    "AI Prediction",
+    "EcoXAI Insights"
+])
 
-st.subheader("Servers vs Water Usage")
+# ----------------------------
+# TAB 1
+# ----------------------------
 
-fig1,ax1 = plt.subplots()
-ax1.bar(df['Number of Servers'],df['Water Used'])
-ax1.set_xlabel("Servers")
-ax1.set_ylabel("Water Used (Litres)")
-st.pyplot(fig1)
+with tab1:
 
-# -------------------------------
-# GRAPH 2
-# -------------------------------
+    st.header("IoT Sensor Data")
+    st.dataframe(df)
 
-st.subheader("Temperature vs Water Usage")
+# ----------------------------
+# TAB 2
+# ----------------------------
 
-fig2,ax2 = plt.subplots()
-ax2.scatter(df['Temperature'],df['Water Used'])
-ax2.set_xlabel("Temperature")
-ax2.set_ylabel("Water Used (Litres)")
-st.pyplot(fig2)
+with tab2:
 
-# -------------------------------
-# LIVE PREDICTION
-# -------------------------------
+    st.header("Water Usage Analytics")
 
-st.header("EcoXAI Live Prediction")
+    fig,ax = plt.subplots()
+    ax.scatter(df['Temperature'],df['Water Used'])
+    ax.set_xlabel("Temperature")
+    ax.set_ylabel("Water Used")
+    st.pyplot(fig)
 
-servers = st.slider("Number of Servers",50,500,200)
-temp = st.slider("Temperature",20,45,30)
-cool = st.slider("Cooling Hours",1,10,4)
-crypto = st.selectbox("Crypto Mining",[0,1])
+# ----------------------------
+# TAB 3
+# ----------------------------
 
-input_data = pd.DataFrame({
-    'Number of Servers':[servers],
-    'Temperature':[temp],
-    'Cooling Hours':[cool],
-    'Crypto Mining':[crypto]
-})
+with tab3:
 
-prediction = model.predict(input_data)
+    st.header("Live Prediction")
 
-st.metric("Predicted Water Usage (Litres)", round(prediction[0],2))
+    servers = st.slider("Servers",50,500,200)
+    temp = st.slider("Temperature",20,45,30)
+    cool = st.slider("Cooling Hours",1,10,4)
+    crypto = st.selectbox("Crypto Mining",[0,1])
+
+    input_data = pd.DataFrame({
+        'Servers':[servers],
+        'Temperature':[temp],
+        'Cooling Hours':[cool],
+        'Crypto Mining':[crypto]
+    })
+
+    prediction = model.predict(input_data)
+
+    st.metric("Predicted Water Usage (Litres)",round(prediction[0],2))
+
+# ----------------------------
+# TAB 4
+# ----------------------------
+
+with tab4:
+
+    st.header("EcoXAI Explanation")
+
+    st.write("""
+EcoXAI analyses water consumption patterns in AI data centres.
+
+Key drivers of water waste:
+• High temperatures  
+• Increased server load  
+• Extended cooling hours  
+• Crypto mining activity
+""")
