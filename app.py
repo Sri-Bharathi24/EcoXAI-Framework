@@ -31,6 +31,7 @@ section[data-testid="stSidebar"] {
     border-right: 2px solid #00c9a7;
 }
 
+/* ── TABS ── */
 .stTabs [data-baseweb="tab-list"] {
     background-color: #162032;
     border-radius: 10px;
@@ -40,16 +41,47 @@ section[data-testid="stSidebar"] {
 .stTabs [data-baseweb="tab"] {
     color: #ffffff !important;
     font-size: 1rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     padding: 10px 24px !important;
     border-radius: 8px !important;
     background-color: #1e2d40 !important;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
 }
 .stTabs [aria-selected="true"] {
     background-color: #00c9a7 !important;
     color: #0f1923 !important;
+    text-shadow: 0 0 12px rgba(0,201,167,0.8) !important;
 }
 
+/* ── SELECTBOX FIX ── */
+div[data-baseweb="select"] > div {
+    background-color: #1e2d40 !important;
+    border: 2px solid #00c9a7 !important;
+    border-radius: 8px !important;
+}
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+/* Dropdown options list */
+ul[data-baseweb="menu"] {
+    background-color: #1e2d40 !important;
+    border: 2px solid #00c9a7 !important;
+}
+ul[data-baseweb="menu"] li {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    background-color: #1e2d40 !important;
+}
+ul[data-baseweb="menu"] li:hover {
+    background-color: #00c9a7 !important;
+    color: #0f1923 !important;
+}
+
+/* ── HEADER ── */
 .eco-header {
     background: linear-gradient(135deg, #0f3460 0%, #162032 100%);
     border: 2px solid #00c9a7;
@@ -57,14 +89,15 @@ section[data-testid="stSidebar"] {
     padding: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
+    box-shadow: 0 0 30px rgba(0,201,167,0.25);
 }
 .eco-header h1 {
-    font-family: 'Inter', sans-serif;
     font-size: 3rem;
     font-weight: 800;
     color: #00c9a7;
     letter-spacing: 3px;
     margin: 0;
+    text-shadow: 0 0 20px rgba(0,201,167,0.7), 0 0 40px rgba(0,201,167,0.4);
 }
 .eco-header p {
     color: #a8d8d0;
@@ -72,30 +105,36 @@ section[data-testid="stSidebar"] {
     font-weight: 500;
     margin: 0.6rem 0 0;
     letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(168,216,208,0.5);
 }
 
+/* ── METRIC CARDS ── */
 .metric-card {
     background: #162032;
     border: 2px solid #1e3a5f;
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
+    box-shadow: 0 0 15px rgba(0,201,167,0.1);
 }
 .metric-value {
     font-family: 'Fira Code', monospace;
     font-size: 2.2rem;
     font-weight: 700;
     color: #00c9a7;
+    text-shadow: 0 0 15px rgba(0,201,167,0.6);
 }
 .metric-label {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #8fa8c0;
+    color: #a8d8d0;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-top: 0.4rem;
+    text-shadow: 0 0 8px rgba(168,216,208,0.4);
 }
 
+/* ── SECTION TITLES ── */
 .section-title {
     font-size: 1rem;
     font-weight: 700;
@@ -105,22 +144,31 @@ section[data-testid="stSidebar"] {
     border-bottom: 2px solid #1e3a5f;
     padding-bottom: 0.5rem;
     margin-bottom: 1.2rem;
+    text-shadow: 0 0 10px rgba(0,201,167,0.5);
 }
 
+/* ── ALERT BOXES ── */
 .alert-box {
     border-radius: 10px;
     padding: 1rem 1.4rem;
     margin: 0.6rem 0;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.6;
 }
-.alert-critical { background: rgba(220,53,69,0.15); border-left: 4px solid #dc3545; color: #ffb3b3; }
-.alert-warning  { background: rgba(255,193,7,0.12); border-left: 4px solid #ffc107; color: #ffe680; }
-.alert-success  { background: rgba(0,201,167,0.12); border-left: 4px solid #00c9a7; color: #a8f0e0; }
+.alert-critical { background: rgba(220,53,69,0.15); border-left: 4px solid #ff4444; color: #ffb3b3; text-shadow: 0 0 8px rgba(255,68,68,0.3); }
+.alert-warning  { background: rgba(255,193,7,0.12); border-left: 4px solid #ffc107; color: #ffe680; text-shadow: 0 0 8px rgba(255,193,7,0.3); }
+.alert-success  { background: rgba(0,201,167,0.12); border-left: 4px solid #00c9a7; color: #a8f0e0; text-shadow: 0 0 8px rgba(0,201,167,0.3); }
 
-label { color: #a8d8d0 !important; font-size: 0.95rem !important; font-weight: 500 !important; }
+/* ── SIDEBAR LABELS ── */
+label {
+    color: #a8d8d0 !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    text-shadow: 0 0 8px rgba(168,216,208,0.3) !important;
+}
 
+/* ── BUTTON ── */
 .stButton > button {
     background: linear-gradient(135deg, #00c9a7, #0f7a6b);
     color: #0f1923;
@@ -131,10 +179,27 @@ label { color: #a8d8d0 !important; font-size: 0.95rem !important; font-weight: 5
     padding: 0.7rem 1.5rem;
     letter-spacing: 1px;
     width: 100%;
+    box-shadow: 0 0 20px rgba(0,201,167,0.4);
+}
+.stButton > button:hover {
+    box-shadow: 0 0 30px rgba(0,201,167,0.7);
 }
 
-p, span, div { color: #e8eaed; }
-h1, h2, h3, h4 { color: #ffffff; font-weight: 700; }
+/* ── GENERAL TEXT ── */
+h1, h2, h3, h4 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Slider */
+.stSlider > div > div > div { background: #00c9a7 !important; }
+
+/* Caption */
+.stCaption { color: #8fa8c0 !important; }
+
+/* Info box */
+.stAlert { background: #162032 !important; color: #a8d8d0 !important; border: 1px solid #00c9a7 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -303,9 +368,9 @@ with tab3:
     x1,x2 = st.columns([1,2])
     with x1:
         st.markdown("""
-        <div style="background:#162032;border:2px solid #1e3a5f;border-radius:12px;padding:1.4rem;">
-        <b style="color:#00c9a7;font-size:0.95rem;letter-spacing:1px;">HOW TO READ SHAP</b><br><br>
-        <span style="color:#a8d8d0;font-size:0.92rem;line-height:2.2;">
+        <div style="background:#162032;border:2px solid #00c9a7;border-radius:12px;padding:1.4rem;box-shadow:0 0 15px rgba(0,201,167,0.2);">
+        <b style="color:#00c9a7;font-size:0.95rem;letter-spacing:1px;text-shadow:0 0 10px rgba(0,201,167,0.6);">HOW TO READ SHAP</b><br><br>
+        <span style="color:#d0eee8;font-size:0.95rem;line-height:2.4;font-weight:500;">
         📌 <b>Longer bar</b> = bigger impact<br>
         🔴 <b>Red</b> = increases water usage<br>
         🔵 <b>Blue</b> = decreases water usage<br>
@@ -349,7 +414,7 @@ with tab4:
         with col:
             st.markdown(f"""
             <div class="metric-card">
-                <div class="metric-value" style="color:{colour}">{val}</div>
+                <div class="metric-value" style="color:{colour};text-shadow:0 0 15px {colour};">{val}</div>
                 <div class="metric-label">{label}</div>
             </div>""", unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
@@ -362,10 +427,13 @@ with tab4:
         else: rl,rc = "CRITICAL RISK","#ff4444"
         st.markdown(f"""
         <div style="background:#162032;border:3px solid {rc};border-radius:16px;
-                    padding:2rem;text-align:center;margin:1.5rem 0;">
+                    padding:2rem;text-align:center;margin:1.5rem 0;
+                    box-shadow:0 0 30px {rc}55;">
             <div style="font-size:0.85rem;color:#8fa8c0;letter-spacing:3px;font-weight:600;margin-bottom:0.5rem;">PREDICTED WATER CONSUMPTION</div>
-            <div style="font-family:'Fira Code',monospace;font-size:3.5rem;color:{rc};font-weight:700;">{pred:,.0f} L</div>
-            <div style="font-size:1rem;color:{rc};font-weight:700;letter-spacing:2px;margin-top:0.3rem;">{rl}</div>
+            <div style="font-family:'Fira Code',monospace;font-size:3.5rem;color:{rc};font-weight:700;
+                        text-shadow:0 0 20px {rc};">{pred:,.0f} L</div>
+            <div style="font-size:1rem;color:{rc};font-weight:700;letter-spacing:2px;margin-top:0.3rem;
+                        text-shadow:0 0 10px {rc};">{rl}</div>
         </div>""", unsafe_allow_html=True)
         st.markdown("### 🧠 EcoXAI Explains Why")
         reasons = []
@@ -397,7 +465,8 @@ with tab4:
 
 st.markdown("---")
 st.markdown("""
-<div style="text-align:center;color:#3a6a5a;font-size:0.8rem;font-weight:500;letter-spacing:2px;padding:0.5rem 0;">
+<div style="text-align:center;color:#3a8a7a;font-size:0.85rem;font-weight:600;
+            letter-spacing:2px;padding:0.5rem 0;text-shadow:0 0 10px rgba(0,201,167,0.4);">
 💧 EcoXAI FRAMEWORK · SAVING WATER · EXPLAINING WHY · INTELLIGENTLY
 </div>
 """, unsafe_allow_html=True)
