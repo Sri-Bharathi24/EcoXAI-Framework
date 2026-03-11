@@ -4,7 +4,7 @@ Developed by Sri Bharathi | 2nd Year BSc Computer Science with Cognitive Systems
 
 Live Application: [Open EcoXAI Live App](https://ecoxai-framework-djnpurvfde3jx8zaqmtiaq.streamlit.app/)
 
-![EcoXAI App](streamlit_screenshot.png)
+https://github.com/Sri-Bharathi24/EcoXAI-Framework/blob/main/%5BEcoXAI%20App%5D(streamlit_screenshot.png).png
 
 ---
 
