@@ -453,4 +453,4 @@ st.markdown("""
             font-weight:700;letter-spacing:3px;padding:0.5rem 0;text-shadow:0 0 10px rgba(0,201,167,0.5);">
 💧 EcoXAI FRAMEWORK · SAVING WATER · EXPLAINING WHY · INTELLIGENTLY
 </div>
-""", unsafe_allow_htm
+""", unsafe_allow_html=True)
